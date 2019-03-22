@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./server/routes/index');
+var usersRouter = require('./server/routes/users');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'server/views/pages'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
@@ -31,6 +31,8 @@ app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  let err = new Error('Not Found');
+  err.status = 404;
   next(createError(404));
 });
 
@@ -46,3 +48,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.set('port', process.env.PORT || 3000);
+
+const server = app.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' +
+      server.address().port);
+});
