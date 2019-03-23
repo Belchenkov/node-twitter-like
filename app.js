@@ -22,7 +22,7 @@ var usersRouter = require('./server/routes/users');
 var app = express();
 
 // connect to our database
-mongoose.connect(config.url);
+mongoose.connect(config.url,  { useNewUrlParser: true });
 // Check if MongoDB is running
 mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Error. Make sure MongoDB is running.');
