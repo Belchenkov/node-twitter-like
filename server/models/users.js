@@ -1,15 +1,16 @@
 // Import Mongoose and password Encrypt
-var mongoose = require('mongoose');
-var bcrypt  = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
+const bcrypt   = require('bcrypt-nodejs');
 
 // define the schema for User model
-var userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     // Using local for Local Strategy Passport
     local: {
         name: String,
         email: String,
         password: String,
     }
+
 });
 
 // Encrypt Password

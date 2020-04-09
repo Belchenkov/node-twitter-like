@@ -1,7 +1,7 @@
 // load passport module
-var LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 // load up the user model
-var User = require('../models/users');
+const User = require('../models/users');
 
 module.exports = function(passport) {
     // passport init setup
@@ -67,7 +67,7 @@ module.exports = function(passport) {
                             return done(null, false, req.flash('signupMessage', 'Wohh! the email is already taken.'));
                         } else {
                             // create the user
-                            var newUser = new User();
+                            const newUser = new User();
                             // Get user name from req.body
                             newUser.local.name = req.body.name;
                             newUser.local.email = email;
