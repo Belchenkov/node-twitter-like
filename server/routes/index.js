@@ -46,8 +46,8 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
 
 /* check if user is logged in */
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
+    if (req.isAuthenticated()) return next();
+
     res.redirect('/login');
 }
 

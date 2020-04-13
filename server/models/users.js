@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
         email: String,
         password: String,
     }
-
 });
 
 // Encrypt Password

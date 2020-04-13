@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 const routes = require('./server/routes/index');
 const users = require('./server/routes/users');
 
+// Import comments controller
+const comments = require('./server/controllers/comments');
+
 // ODM With Mongoose
 const mongoose = require('mongoose');
 // Modules to store session
@@ -71,9 +74,13 @@ app.use(passport.session());
 // flash messages
 app.use(flash());
 
+// Set Routes
 app.use('/', routes);
 app.use('/users', users);
 
+// Setup routes for comments
+app.get('/comments', comments.hasAuthorization, comments.list);
+app.post('/comments', comments.hasAuthorization, comments.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -116,7 +123,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 const server = app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + server.address().port);
