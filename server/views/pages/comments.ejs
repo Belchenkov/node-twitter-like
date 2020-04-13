@@ -92,14 +92,14 @@
         <div class="lead">
             <div class="list-group">
             <% comments.forEach(function(comments){ %>
-                    <a href="#" class="list-group-item">
+                    <div class="list-group-item">
                         <img src="<%= gravatar %>" alt="" style="float: left; margin-right: 10px">
                         <div class="comments">
                             <h4 class="list-group-item-heading"><%= comments.title %></h4>
                             <p class="list-group-item-text"><%= comments.content %></p>
                             <small class="text-muted">By: <%= comments.user.local.email %></small>
                         </div>
-                    </a>
+                    </div>
             <% }); %>
             </div>
         </div>
