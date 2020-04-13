@@ -17,5 +17,5 @@ git clone
  npm run dev   
 ```
 
-## Demo:
+## Demo: https://node-twitter-like-ab.herokuapp.com
 
